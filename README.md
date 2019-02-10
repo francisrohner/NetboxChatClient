@@ -2,4 +2,6 @@
 C# Chat client for Netbox(Java)
 
 # Resources
-Emoji art from: https://www.flaticon.com/icon-packs/emoji
+Emoji art from FlatIcon: 
+
+https://www.flaticon.com/packs/smileys-and-people-7
