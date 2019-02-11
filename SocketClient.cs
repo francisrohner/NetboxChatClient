@@ -170,14 +170,14 @@ namespace SocketClient
                 return string.Empty;
             byte[] trunk = new byte[data.Length - 1];
             Array.Copy(data, 1, trunk, 0, trunk.Length);
-            return Encoding.ASCII.GetString(trunk).Replace("<<EOT>>", "");
+            return Encoding.UTF8.GetString(trunk).Replace("<<EOT>>", "");
         }
 
         private byte[] PrepareMessageForTransit(string msg)
         {
             string eotData = "<<EOT>>";
-            byte[] eotBytes = Encoding.ASCII.GetBytes(eotData);
-            byte[] msgBytes = Encoding.ASCII.GetBytes(msg);
+            byte[] eotBytes = Encoding.UTF8.GetBytes(eotData);
+            byte[] msgBytes = Encoding.UTF8.GetBytes(msg);
 
 
             byte[] bytesOut = new byte[eotBytes.Length + msgBytes.Length + 1];
@@ -193,7 +193,7 @@ namespace SocketClient
             int eotStartIndex = -1;
             int eotIndex = 0;
             string eotData = "<<EOT>>";
-            byte[] eotBytes = Encoding.ASCII.GetBytes(eotData);
+            byte[] eotBytes = Encoding.UTF8.GetBytes(eotData);
             for (int i = 0; i < data.Length && eotIndex < eotData.Length; i++)
             {
                 if (data[i] == eotBytes[eotIndex++])
@@ -217,7 +217,7 @@ namespace SocketClient
             /**
             int bytesMatched = 0;
             string eotData = "<<EOT>>";
-            byte[] eotBytes = Encoding.ASCII.GetBytes(eotData);
+            byte[] eotBytes = Encoding.UTF8.GetBytes(eotData);
             if (data.Length < eotBytes.Length) return false;
             for(int i = 0; i < data.Length; i++)
             {
